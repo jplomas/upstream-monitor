@@ -1,0 +1,24 @@
+{
+  "name": "upstream-monitor",
+  "version": "1.0.0",
+  "description": "Upstream dependency monitoring tool",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "author": "JP Lomas <jp.lomas@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "clibuilder": "^9.0.0",
+    "yaml": "^2.5.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.10.0",
+    "eslint": "^9.10.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-vue": "^9.28.0",
+    "prettier": "^3.3.3"
+  }
+}

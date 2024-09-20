@@ -1,0 +1,13 @@
+upstreams:
+  - source: github
+    org: open-quantum-safe
+    repo: oqs-provider
+    branch: main
+  - source: github
+    org: open-quantum-safe
+    repo: liboqs
+    branch: main
+  - source: github
+    org: open-quantum-safe
+    repo: boringssl
+    branch: main
