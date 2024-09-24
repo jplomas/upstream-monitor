@@ -8,7 +8,7 @@ async function start() {
   for (const upstream of config.upstreams) {
     console.log(`getting issues from GitHub for: ${upstream.org}/${upstream.repo} on branch ${upstream.branch}`);
     const octokit = new Octokit({});
-    const issues = await octokit.rest.issues.listForRepo({
+    const issues = await octokit.paginate('GET /repos/{owner}/{repo}/issues', {
       owner: upstream.org,
       repo: upstream.repo,
     });
