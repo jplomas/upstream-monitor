@@ -6,9 +6,11 @@
   "scripts": {
     "lint": "eslint ."
   },
+  "type": "module",
   "author": "JP Lomas <jp.lomas@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@octokit/rest": "^21.0.2",
     "clibuilder": "^9.0.0",
     "yaml": "^2.5.1"
   },

@@ -1,5 +1,5 @@
-const YAML = require('yaml');
-const fs = require('fs');
+import YAML from 'yaml';
+import fs from 'fs';
 
 function validate() {
   const file = fs.readFileSync('./config.yml', 'utf8');
@@ -45,8 +45,8 @@ function validate() {
   if (!validConfig) {
     process.exit(1);
   }
-  console.log(config);
+  // console.log(config);
   console.log('Valid config');
 }
 
-module.exports = validate;
+export default validate;
