@@ -12,6 +12,7 @@
   "dependencies": {
     "@octokit/rest": "^21.0.2",
     "clibuilder": "^9.0.0",
+    "dotenv": "^16.4.5",
     "yaml": "^2.5.1"
   },
   "devDependencies": {
