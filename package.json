@@ -4,13 +4,27 @@
   "description": "Upstream dependency monitoring tool",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "dev": "npm run devsass && npm run build:hugo && run-p dev:**",
+    "devsass": "sass --no-source-map themes/oqs/assets/css/style.scss themes/oqs/assets/css/main.css",
+    "prodsass": "sass --no-source-map --style=compressed themes/oqs/assets/css/style.scss themes/oqs/assets/css/main.css",
+    "dev:sass": "onchange 'themes/oqs/assets/css/**/*.scss' -- npm run devsass",
+    "dev:vite": "vite --host",
+    "dev:hugo": "hugo --environment development --buildDrafts --buildFuture -w -d public",
+    "dev:hugo-watch": "onchange 'content/**/*.md' 'config.toml' 'layouts/**/*' 'themes/**/*' -- npm run dev:hugo",
+    "build": "NODE_ENV=production npm-run-all clean prodsass prod:hugo",
+    "build:hugo": "hugo -d public",
+    "build:vite": "vite build",
+    "prod:hugo": "hugo --minify --environment production -d public",
+    "prod:sass": "npm run prodsass",
+    "clean": "rimraf public"
   },
   "type": "module",
   "author": "JP Lomas <jp.lomas@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@octokit/rest": "^21.0.2",
+    "bulma": "^1.0.2",
     "clibuilder": "^9.0.0",
     "dotenv": "^16.4.5",
     "yaml": "^2.5.1"
@@ -22,6 +36,11 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-vue": "^9.28.0",
-    "prettier": "^3.3.3"
+    "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
+    "prettier": "^3.3.3",
+    "sass": "^1.79.4",
+    "vite": "^5.4.8",
+    "vite-hugo-plugin": "^5.1.0"
   }
 }
