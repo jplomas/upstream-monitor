@@ -1,14 +1,50 @@
 {{ define "main" }}
-<section class="section">
-  <div class="container">
-    <h1 class="title is-1">Upstream Monitor</h1>
-    <p class="subtitle">Built with <strong>Hugo</strong> and <strong>Bulma</strong></p>
+<div class="section fixed-grid has-3-cols">
+  <div class="grid">
+<div class="card cell">
+  <div class="card-content">
+    <p class="title">
+      121
+    </p>
+    <p class="subtitle">Commits</p>
   </div>
-</section>
-<section class="section">{{ .Content }}</section>
-{{ range site.RegularPages }}
-<section class="section">
-  <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-  {{ .Summary }}
-</section>
-{{ end }} {{ end }}
+</div>
+<div class="card cell">
+  <div class="card-content">
+    <p class="title">
+      121
+    </p>
+    <p class="subtitle">Issues</p>
+  </div>
+</div>
+<div class="card cell">
+  <div class="card-content">
+    <p class="title">
+      121
+    </p>
+    <p class="subtitle">In Progress</p>
+  </div>
+</div>
+</div>
+</div>
+  <section class="section">
+    {{ range site.Pages.GroupByParam "org" }}
+    {{ $org := .Key }}
+    {{ range .Pages.GroupByParam "repo" }}
+    <h2 class="title is-3">{{ $org }}/{{ .Key }}</h2>
+    <h2 class="title is-4">Commits</h2>
+    {{ range .Pages }}
+      {{ if eq (path.Base .File.Dir) "commits" }}
+        <h2><a href="{{ .RelPermalink }}">{{ .Date }} {{ .File.Dir }}</a></h2>
+      {{ end }}
+    {{ end }}
+    <h2 class="title is-4">Issues</h2>
+    {{ range .Pages }}
+      {{ if eq (path.Base .File.Dir) "issues" }}
+        <p><a href="{{ .RelPermalink }}">{{ .Title }} {{ .File.Dir }}</a></p>
+      {{ end }}
+    {{ end }}
+    {{ end }}
+    {{ end }}
+  </section>
+{{ end }}
